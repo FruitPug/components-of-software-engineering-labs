@@ -1,0 +1,85 @@
+@startuml
+
+entity "User" as user {
+  * user_id : UUID <<PK>>
+  --
+  name : VARCHAR
+  email : VARCHAR <<UQ>>
+  password_hash : VARCHAR
+  role : ENUM('user', 'admin')
+}
+
+entity "Book" as book {
+  * book_id : UUID <<PK>>
+  --
+  title : VARCHAR
+  rating : INT
+  review_count : INT
+  published_year : INT
+}
+
+entity "Review" as review {
+  * review_id : UUID <<PK>>
+  --
+  rating : INT
+  comment : TEXT
+  --
+  user_id : UUID <<FK>>
+  book_id : UUID <<FK>>
+}
+
+entity "UserBookStatus" as status {
+  * user_id : UUID <<FK,PK>>
+  * book_id : UUID <<FK,PK>>
+  --
+  status : ENUM('reading','planning','finished')
+}
+
+entity "Author" as author {
+  * author_id : UUID <<PK>>
+  --
+  name : VARCHAR
+}
+
+entity "BookAuthorTable" as book_author_table {
+  * book_id : UUID <<FK,PK>>
+  * author_id : UUID <<FK,PK>>
+}
+
+entity "Genre" as genre {
+  * genre_id : UUID <<PK>>
+  --
+  name : VARCHAR <<UQ>>
+}
+
+entity "BookGenreTable" as book_genre_table {
+  * book_id : UUID <<FK,PK>>
+  * genre_id : UUID <<FK,PK>>
+}
+
+entity "FriendshipTable" as friendship_table {
+  * user_id : UUID <<FK,PK>>
+  * friend_id : UUID <<FK,PK>>
+}
+
+
+user ||--o{ review
+
+book ||--o{ review
+
+user ||--o{ status
+
+book ||--o{ status
+
+book ||--|{ book_author_table
+
+author ||--o{ book_author_table
+
+book ||--|{ book_genre_table
+
+genre ||--o{ book_genre_table
+
+user ||--o{ friendship_table : "follows"
+user ||--o{ friendship_table : "is followed by"
+
+@enduml
