@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+
+actor "User" as user
+actor "Admin" as admin
+actor "External Recommendation Service" as recommender
+
+admin -|> user
+
+rectangle "Book Review System" {
+  usecase "Register Account" as UC1
+  usecase "Log In" as UC2
+  usecase "Browse Books" as UC3
+  usecase "Add Review" as UC4
+  usecase "Update Reading Status" as UC5
+  usecase "View Friend Activity" as UC6
+  usecase "Follow/Unfollow Users" as UC7
+  usecase "Manage Books" as UC8
+  usecase "Get Recommendations" as UC9
+  usecase "Moderate Reviews" as UC10
+
+  UC4 .> UC2 : <<include>>
+  UC5 .> UC2 : <<include>>
+  UC8 .> UC2 : <<include>>
+  UC10 .> UC8 : <<extend>>
+  UC9 .> recommender : <<include>>
+}
+
+user -- UC1
+user -- UC2
+user -- UC3
+user -- UC4
+user -- UC5
+user -- UC6
+user -- UC7
+user -- UC9
+
+admin -- UC8
+admin -- UC10
+@enduml
