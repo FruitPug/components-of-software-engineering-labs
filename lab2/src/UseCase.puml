@@ -1,40 +1,77 @@
 @startuml
 left to right direction
 
-actor "User" as user
-actor "Admin" as admin
-actor "External Recommendation Service" as recommender
+actor Visitor
+actor RegisteredUser
+actor Admin
 
-admin -|> user
+Admin --|> RegisteredUser : Extends
+RegisteredUser --|> Visitor : Extends 
 
-rectangle "Book Review System" {
-  usecase "Register Account" as UC1
-  usecase "Log In" as UC2
-  usecase "Browse Books" as UC3
-  usecase "Add Review" as UC4
-  usecase "Update Reading Status" as UC5
-  usecase "View Friend Activity" as UC6
-  usecase "Follow/Unfollow Users" as UC7
-  usecase "Manage Books" as UC8
-  usecase "Get Recommendations" as UC9
-  usecase "Moderate Reviews" as UC10
+usecase "Browse Catalog" as UC_Browse
+usecase "Search Books" as UC_Search
+usecase "View Book Details" as UC_ViewBook
+usecase "Register" as UC_Register
+usecase "Login" as UC_Login
 
-  UC4 .> UC2 : <<include>>
-  UC5 .> UC2 : <<include>>
-  UC8 .> UC2 : <<include>>
-  UC10 .> UC8 : <<extend>>
-  UC9 .> recommender : <<include>>
-}
+usecase "Logout" as UC_Logout
+usecase "Manage Review" as UC_ManageReview
+usecase "Write Review" as UC_WriteReview
+usecase "Edit Review" as UC_EditReview
+usecase "Delete Review" as UC_DeleteReview
+usecase "Like Review" as UC_LikeReview
+usecase "Follow User" as UC_FollowUser
+usecase "Set Reading Status" as UC_Status
+usecase "Report Review" as UC_ReportReview
 
-user -- UC1
-user -- UC2
-user -- UC3
-user -- UC4
-user -- UC5
-user -- UC6
-user -- UC7
-user -- UC9
+usecase "Update Book Rating" as UC_UpdateRating
 
-admin -- UC8
-admin -- UC10
+usecase "Manage Books" as UC_ManageBooks
+usecase "Manage Users" as UC_ManageUsers
+usecase "Manage Reviews" as UC_ManageAllReviews
+usecase "Add Book" as UC_AddBook
+usecase "Delete Book" as UC_DeleteBook
+usecase "Edit Description" as UC_EditDescription
+usecase "Ban User" as UC_BanUser
+usecase "Mod User" as UC_ModUser
+usecase "Delete Reviews" as UC_DeleteReviews
+
+Visitor --> UC_Browse
+Visitor --> UC_Search
+Visitor --> UC_ViewBook
+Visitor --> UC_Register
+Visitor --> UC_Login
+
+RegisteredUser --> UC_Logout
+RegisteredUser --> UC_ManageReview
+RegisteredUser --> UC_LikeReview
+RegisteredUser --> UC_FollowUser
+RegisteredUser --> UC_Status
+RegisteredUser --> UC_ReportReview
+
+Admin --> UC_ManageBooks
+Admin --> UC_ManageUsers
+Admin --> UC_ManageAllReviews
+
+UC_WriteReview ..> UC_UpdateRating : Use
+UC_EditReview ..> UC_UpdateRating : Use
+UC_DeleteReview ..> UC_UpdateRating : Use
+
+UC_DeleteBook ..> UC_DeleteReviews : Use
+UC_BanUser ..> UC_DeleteReviews : Use
+UC_DeleteReviews ..> UC_UpdateRating : Use
+
+UC_ManageReview <|-- UC_WriteReview : Extends
+UC_ManageReview <|-- UC_EditReview : Extends
+UC_ManageReview <|-- UC_DeleteReview : Extends
+
+UC_ManageBooks <|-- UC_AddBook : Extends
+UC_ManageBooks <|-- UC_DeleteBook : Extends
+UC_ManageBooks <|-- UC_EditDescription : Extends
+
+UC_ManageUsers <|-- UC_BanUser : Extends
+UC_ManageUsers <|-- UC_ModUser : Extends
+
+UC_ManageAllReviews  <|-- UC_DeleteReviews : Extends
+
 @enduml
