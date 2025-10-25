@@ -37,21 +37,19 @@
 
 * **NFR1**: The system shall ensure that all passwords are stored securely using salted hashing algorithms.
 
-* **NFR2**: The system shall provide a response time of less than 2 seconds for all user actions under a normal load.
+* **NFR2**: The system shall provide a response time of less than 2 seconds with 500 simultaneous users.
 
-* **NFR3**: The system shall support at least 500 concurrent users without noticeable performance degradation.
+* **NFR3**: The system shall ensure data consistency and integrity across related entities.
 
-* **NFR4**: The system shall ensure data consistency and integrity across related entities.
+* **NFR4**: The system shall maintain 98% uptime during regular operation.
 
-* **NFR5**: The system shall maintain 98% uptime during regular operation.
+* **NFR5**: The system shall log all administrative actions for auditing and accountability.
 
-* **NFR6**: The system shall log all administrative actions for auditing and accountability.
+* **NFR6**: The system shall comply with privacy regulations by allowing users to delete their accounts and associated data.
 
-* **NFR7**: The system shall comply with privacy regulations by allowing users to delete their accounts and associated data.
+* **NFR7**: The system’s UI shall be responsive and usable on desktop and mobile devices.
 
-* **NFR8**: The system’s UI shall be responsive and usable on desktop and mobile devices.
-
-* **NFR9**: The system shall provide database backups daily and allow full restoration within 30 minutes.
+* **NFR8**: The system shall provide database backups daily, store them for 1 year and allow full restoration within 30 minutes.
 
 
 ## Traceability Matrix
@@ -75,32 +73,31 @@
 * UC17: Remove From Friends
 * UC18: Set Reading Status
 * UC19: Report Review
-* UC20: Update Book Rating
-* UC21: Manage Books
-* UC22: Add Book
-* UC23: Delete Book
-* UC24: Edit Description
-* UC25: Manage Users
-* UC26: Ban User
-* UC27: Mod User
-* UC28: Manage All Reviews
-* UC29: Delete Reviews
+* UC20: Manage Books
+* UC21: Add Book
+* UC22: Delete Book
+* UC23: Edit Description
+* UC24: Manage Users
+* UC25: Ban User
+* UC26: Mod User
+* UC27: Manage All Reviews
+* UC28: Delete Reviews
 
 ### Table
-| FC/UC | UC1 | UC2 | UC3 | UC4 | UC5 | UC6 | UC7 | UC8 | UC9 | UC10 | UC11 | UC12 | UC13 | UC14 | UC15 | UC16 | UC17 | UC18 | UC19 | UC20 | UC21 | UC22 | UC23 | UC24 | UC25 | UC26 | UC27 | UC28 | UC29 |
-|-------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| FC1   | ✅   | ✅   | ✅   |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FC2   |     |     |     | ✅   | ✅   |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FC3   |     |     |     |     |     | ✅   |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FC4   |     |     |     |     |     |     | ✅   | ✅   | ✅   | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FC5   |     |     |     |     |     |     |     | ✅   | ✅   | ✅    |      |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      |      |      |      |      |
-| FC6   |     |     |     |     |     |     |     |     |     |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FC7   |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |
-| FC8   |     |     |     |     |     |     |     |     |     |      |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FC9   |     |     |     |     |     |     |     |     |     |      |      |      | ✅    | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |
-| FC10  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      |      |      |      |      |      |
-| FC11  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |
-| FC12  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      | ✅    |      |      | ✅    |      |      |      |      |      | ✅    |
-| FC13  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    |      |      |
-| FC14  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      | ✅    |      |      | ✅    |
-| FC15  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    |
+| FC/UC | UC1 | UC2 | UC3 | UC4 | UC5 | UC6 | UC7 | UC8 | UC9 | UC10 | UC11 | UC12 | UC13 | UC14 | UC15 | UC16 | UC17 | UC18 | UC19 | UC20 | UC21 | UC22 | UC23 | UC24 | UC25 | UC26 | UC27 | UC28 |
+|-------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
+| FC1   | ✅   | ✅   | ✅   |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FC2   |     |     |     | ✅   | ✅   |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FC3   |     |     |     |     |     | ✅   |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FC4   |     |     |     |     |     |     | ✅   | ✅   | ✅   | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FC5   |     |     |     |     |     |     |     | ✅   | ✅   | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FC6   |     |     |     |     |     |     |     |     |     |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FC7   |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      |      |      |      |      |      |
+| FC8   |     |     |     |     |     |     |     |     |     |      |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FC9   |     |     |     |     |     |     |     |     |     |      |      |      | ✅    | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |      |      |      |      |      |      |
+| FC10  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      |      |      |      |      |
+| FC11  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |
+| FC12  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      | ✅    |
+| FC13  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    |      |      |
+| FC14  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    |      |      | ✅    |
+| FC15  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    |

@@ -27,9 +27,6 @@ usecase "Accept Friend Request" as UC_AcceptFriendRequest
 usecase "Reject Friend Request" as UC_RejectFriendRequest
 usecase "Remove From Friends" as UC_RemoveFromFriends
 usecase "Set Reading Status" as UC_Status
-usecase "Report Review" as UC_ReportReview
-
-usecase "Update Book Rating" as UC_UpdateRating
 
 usecase "Manage Books" as UC_ManageBooks
 usecase "Manage Users" as UC_ManageUsers
@@ -49,31 +46,23 @@ Visitor --> UC_Login
 
 RegisteredUser --> UC_Logout
 RegisteredUser --> UC_ManageReview
-RegisteredUser --> UC_LikeReview
 RegisteredUser --> UC_ManageFriends
 RegisteredUser --> UC_Status
-RegisteredUser --> UC_ReportReview
 
 Admin --> UC_ManageBooks
 Admin --> UC_ManageUsers
 Admin --> UC_ManageAllReviews
 
-UC_WriteReview ..> UC_UpdateRating : Use
-UC_EditReview ..> UC_UpdateRating : Use
-UC_DeleteReview ..> UC_UpdateRating : Use
-
-UC_DeleteBook ..> UC_DeleteReviews : Use
-UC_BanUser ..> UC_DeleteReviews : Use
-UC_DeleteReviews ..> UC_UpdateRating : Use
-
 UC_ManageFriends  <|-- UC_SendFriendRequest : Extends
 UC_ManageFriends  <|-- UC_AcceptFriendRequest : Extends
 UC_ManageFriends  <|-- UC_RejectFriendRequest : Extends
 UC_ManageFriends  <|-- UC_RemoveFromFriends : Extends
+UC_ManageFriends  <|-- UC_ViewProfile : Extends
 
 UC_ManageReview <|-- UC_WriteReview : Extends
 UC_ManageReview <|-- UC_EditReview : Extends
 UC_ManageReview <|-- UC_DeleteReview : Extends
+UC_ManageReview <|-- UC_LikeReview : Extends
 
 UC_ManageBooks <|-- UC_AddBook : Extends
 UC_ManageBooks <|-- UC_DeleteBook : Extends
