@@ -10,21 +10,19 @@
 
 * **FR4**: The system shall allow registered users to write, edit, and delete reviews for any book in the catalog, limited to one review per book per user.
 
-* **FR5**: When a review is created, edited, or deleted, the system shall automatically update the book’s average rating and review count.
+* **FR5**: The system shall allow registered users to like or unlike reviews to express agreement or support for a particular review.
 
-* **FR6**: The system shall allow registered users to like or unlike reviews to express agreement or support for a particular review.
+* **FR6**: The system shall allow registered users to set and update their reading status for any book as “Reading,” “Want to Read,” or “Finished.”
 
-* **FR7**: The system shall allow registered users to set and update their reading status for any book as “Reading,” “Want to Read,” or “Finished.”
+* **FR7**: The system shall allow users to view and manage their profiles, including viewing lists of read or wanted books, reviews, and social connections.
 
-* **FR8**: The system shall allow users to view and manage their profiles, including viewing lists of read or wanted books, reviews, and social connections.
+* **FR8**: The system shall allow registered users to send, accept, reject, and remove friend requests, managing a list of friends within the platform.
 
-* **FR9**: The system shall allow registered users to send, accept, reject, and remove friend requests, managing a list of friends within the platform.
+* **FR9**: The system shall allow administrators to manage books — including adding new titles, editing book descriptions, and deleting books from the catalog.
 
-* **FR10**: The system shall allow administrators to manage books — including adding new titles, editing book descriptions, and deleting books from the catalog.
+* **FR10**: The system shall allow administrators to manage users, including viewing profiles, modifying user information, and banning users who violate policies.
 
-* **FR11**: The system shall allow administrators to manage users, including viewing profiles, modifying user information, and banning users who violate policies.
-
-* **FR12**: The system shall allow administrators to manage and delete reviews globally.
+* **FR11**: The system shall allow administrators to manage and delete reviews globally.
 
 
 ### Non-Functional Requirements
@@ -83,11 +81,10 @@
 | FR2   |     |     |     | ✅   | ✅   |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
 | FR3   |     |     |     |     |     | ✅   |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
 | FR4   |     |     |     |     |     |     | ✅   | ✅   | ✅   | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FR5   |     |     |     |     |     |     |     | ✅   | ✅   | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FR6   |     |     |     |     |     |     |     |     |     |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FR7   |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      |      |      |      |      |
-| FR8   |     |     |     |     |     |     |     |     |     |      |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-| FR9   |     |     |     |     |     |     |     |     |     |      |      |      | ✅    | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |      |      |      |      |      |
-| FR10  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |
-| FR11  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    |      |      |
-| FR12  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    |
+| FR5   |     |     |     |     |     |     |     |     |     |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FR6   |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      | ✅    |      |      |      |      |      |      |      |      |      |
+| FR7   |     |     |     |     |     |     |     |     |     |      |      | ✅    |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| FR8   |     |     |     |     |     |     |     |     |     |      |      |      | ✅    | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |      |      |      |      |      |
+| FR9   |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    | ✅    |      |      |      |      |      |
+| FR10  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    | ✅    |      |      |
+| FR11  |     |     |     |     |     |     |     |     |     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      | ✅    | ✅    |
