@@ -1,0 +1,52 @@
+@startuml
+actor RegisteredUser as user
+participant "Web Interface" as ui
+participant "AuthService" as auth
+participant "ReviewService" as reviewSvc
+participant "RatingService" as ratingSvc
+database "Database" as db
+
+user -> ui : writeReview(bookId, rating, comment)
+activate ui
+
+alt Valid Session
+    ui -> auth : validateUser(sessionToken)
+    activate auth
+    auth --> ui : validationSuccessful()
+    deactivate auth
+
+    ui -> reviewSvc : createReview(userId, bookId, rating, comment)
+    activate reviewSvc
+    reviewSvc -> db : INSERT INTO Review(user_id, book_id, rating, comment)
+    activate db
+    db --> reviewSvc : reviewCreated()
+    deactivate db
+
+    reviewSvc -> ratingSvc : updateBookRating(bookId)
+    activate ratingSvc
+
+    ratingSvc -> db : UPDATE Book SET rating = newRating, review_count = newReviewCount WHERE book_id = bookId
+    activate db
+    db --> ratingSvc : ratingUpdated()
+    deactivate db
+
+    ratingSvc --> reviewSvc : ratingUpdated()
+    deactivate ratingSvc
+
+    reviewSvc --> ui : reviewCreatedSuccessfully()
+    deactivate reviewSvc
+
+    ui --> user : displayMessage("Review added successfully")
+else Invalid Session
+    ui -> auth : validateUser(sessionToken)
+    activate auth
+    auth --> ui : validationFailed()
+    deactivate auth
+    ui --> user : displayMessage("You must be logged in to post a review")
+    deactivate ui
+end
+
+destroy ratingSvc
+destroy reviewSvc
+
+@enduml
