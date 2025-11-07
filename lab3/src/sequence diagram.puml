@@ -6,47 +6,46 @@ participant "ReviewService" as reviewSvc
 participant "RatingService" as ratingSvc
 database "Database" as db
 
-user -> ui : writeReview(bookId, rating, comment)
+user -> ui : 1. writeReview(bookId, rating, comment)
 activate ui
 
 alt Valid Session
-    ui -> auth : validateUser(sessionToken)
+    ui -> auth : 2. validateUser(sessionToken)
     activate auth
-    auth --> ui : validationSuccessful()
+    auth --> ui : 3. validationSuccessful()
     deactivate auth
 
-    ui -> reviewSvc : createReview(userId, bookId, rating, comment)
+    ui -> reviewSvc : 4. createReview(userId, bookId, rating, comment)
     activate reviewSvc
-    reviewSvc -> db : INSERT INTO Review(user_id, book_id, rating, comment)
+    reviewSvc -> db : 5. INSERT INTO Review(user_id, book_id, rating, comment)
     activate db
-    db --> reviewSvc : reviewCreated()
+    db --> reviewSvc : 6. reviewCreated()
     deactivate db
 
-    reviewSvc -> ratingSvc : updateBookRating(bookId)
+    reviewSvc -> ratingSvc : 7. updateBookRating(bookId)
     activate ratingSvc
 
-    ratingSvc -> db : UPDATE Book SET rating = newRating, review_count = newReviewCount WHERE book_id = bookId
+    ratingSvc -> db : 8. UPDATE Book SET rating = newRating, review_count = newReviewCount WHERE book_id = bookId
     activate db
-    db --> ratingSvc : ratingUpdated()
+    db --> ratingSvc : 9. ratingUpdated()
     deactivate db
 
-    ratingSvc --> reviewSvc : ratingUpdated()
+    ratingSvc --> reviewSvc : 10. ratingUpdated()
     deactivate ratingSvc
+    destroy ratingSvc
 
-    reviewSvc --> ui : reviewCreatedSuccessfully()
+    reviewSvc --> ui : 11. reviewCreatedSuccessfully()
     deactivate reviewSvc
+    destroy reviewSvc
 
-    ui --> user : displayMessage("Review added successfully")
+    ui --> user : 12. displayMessage("Review added successfully")
 else Invalid Session
-    ui -> auth : validateUser(sessionToken)
+    ui -> auth : 2. validateUser(sessionToken)
     activate auth
-    auth --> ui : validationFailed()
+    auth --> ui : 3.2. validationFailed()
     deactivate auth
-    ui --> user : displayMessage("You must be logged in to post a review")
+    ui --> user : 3.3. displayMessage("You must be logged in to post a review")
     deactivate ui
 end
-
-destroy ratingSvc
-destroy reviewSvc
 
 @enduml
