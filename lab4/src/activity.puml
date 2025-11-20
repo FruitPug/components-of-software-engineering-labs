@@ -1,0 +1,31 @@
+@startuml
+|User|
+start
+:Select Book to Review;
+:Submit Review;
+
+|App|
+:Validate Session;
+if (Validation successful?) then (No)
+  :Display error "Login required";
+  stop
+else (Yes)
+  :Forward Review Data;
+endif
+
+|ReviewService|
+:Create Review record;
+fork
+  :Log Review Creation;
+fork again
+  |Database|
+  :Insert Review;
+  :Recalculate Rating;
+end fork
+|ReviewService|
+:Return confirmation;
+
+|App|
+:Show confirmation to User;
+stop
+@enduml
